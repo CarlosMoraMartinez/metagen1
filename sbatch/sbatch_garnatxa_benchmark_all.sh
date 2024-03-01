@@ -18,14 +18,14 @@
 #SBATCH -e slurm.%N.%j.err
 #SBATCH --qos=long
 #SBATCH --cpus-per-task 4
-#SBATCH --mem=12G
-#SBATCH --time=8-00:00:00 # 8 días 
+#SBATCH --mem=16G
+#SBATCH --time=1-00:00:00 # 8 días 
 
 #Do this before executing sbatch
 module load anaconda #3_2022.10
 
 while read l; do
     ls -lh $l
-    nextflow run all.nf -c $l -profile conda -resume -with-report report.html -with-dag pipeline_dag.html
     rm *.html
+    nextflow run all.nf -c $l -profile conda -resume -with-report report.html -with-dag pipeline_dag.html  
 done < config/benchmak/filelist.txt
