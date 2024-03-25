@@ -19,7 +19,7 @@
 #SBATCH --qos=medium
 #SBATCH --cpus-per-task 4
 #SBATCH --mem=12G
-#SBATCH --time=8-00:00:00 # 8 días 
+#SBATCH --time=1-00:00:00 # 8 días 
 
 #Do this before executing sbatch
 module load anaconda #3_2022.10
