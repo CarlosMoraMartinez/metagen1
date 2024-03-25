@@ -16,7 +16,7 @@
 #SBATCH --job-name=k2pat
 #SBATCH -o slurm.%N.%j.out
 #SBATCH -e slurm.%N.%j.err
-#SBATCH --qos=medium
+#SBATCH --qos=short
 #SBATCH --cpus-per-task 4
 #SBATCH --mem=12G
 #SBATCH --time=1-00:00:00 # 8 días 
