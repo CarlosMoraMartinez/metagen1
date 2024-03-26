@@ -22,4 +22,4 @@ ENV PATH="$PATH:/usr/local/bin/samtools/bin"
 
 WORKDIR /usr/
 
-RUN rm -rf samtools-1.19.2
+RUN rm -rf samtools-1.19.2 samtools-1.19.2.tar
