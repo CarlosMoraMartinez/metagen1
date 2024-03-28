@@ -21,6 +21,7 @@ extra_fn_clean_exts:
   - ".bracken.err"
   - ".standard.kraken2.report"
   - ".trimlog.out"
+  - ".megahit.err"
   - "_"
 top_modules:
  - "trimmomatic":
@@ -36,6 +37,11 @@ top_modules:
       info: "Taxonomic read classification."
       path_filters:
        - "*.kraken2.report"
+ - "megahit":
+      name: "MEGAHIT"
+      info: "Assembly from filtered reads"
+      path_filters:
+       - "*.megahit.err"
  - "fastqc":
       name: "FastQC Before Trimming - R1"
       info: "This section shows the module with different files"

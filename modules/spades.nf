@@ -24,8 +24,11 @@ process callMetaspades{
   errfile=!{illumina_id}.metaspades.err
   outfile=!{illumina_id}.metaspades.fasta
 
+  mem='!{params.resources.callMetaspades.mem}'
+  mem=${mem%' GB'}
 
   metaspades.py -t !{params.resources.callMetaspades.cpus} \
+                -m $mem \
                 --only-assembler \
                 --phred-offset !{phred_offset} \
                 -k !{kmer_sizes} \
