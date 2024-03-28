@@ -50,7 +50,7 @@ workflow KRAKEN2BRACKEN {
  
 
   //callKronaFromKraken2: Krona plot from Kraken report
-  if(params.resources.callKronaFromKraken2.do_krona){
+  if(params.callKronaFromKraken2.do_krona){
     ch_krona_input = ch_kraken2_output
         .map{it -> tuple(it[0], it[2])}
     callKronaFromKraken2(ch_krona_input)
