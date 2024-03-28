@@ -11,3 +11,6 @@ sudo docker pull nanozoo/krona:latest
 sudo docker pull staphb/multiqc:latest
 sudo docker pull staphb/trimmomatic:latest
 sudo docker pull staphb/samtools:latest
+sudo docker pull staphb/spades:latest
+sudo docker pull nanozoo/megahit:latest
+sudo docker pull staphb/quast:latest

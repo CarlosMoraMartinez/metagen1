@@ -67,9 +67,11 @@ workflow {
       ASSEMBLY(ch_fastq_filtered)
       ch_spades_output = ASSEMBLY.out.ch_spades_output
       ch_megahit_output = ASSEMBLY.out.ch_megahit_output
+      ch_metaquast_output = ASSEMBLY.out.ch_metaquast_output
    }else{
       ch_spades_output = Channel.from([])
       ch_megahit_output = Channel.from([])
+      ch_metaquast_output = Channel.from([])
    }
    //Call MultiQC workflow
 
@@ -80,7 +82,8 @@ workflow {
         ch_alignment_output,
         ch_kraken2_output,
         ch_bracken_output,
-        ch_megahit_output
+        ch_megahit_output,
+        ch_metaquast_output
       )
       ch_multiqc_out = MULTIQC.out.ch_multiqc_out
    }else{

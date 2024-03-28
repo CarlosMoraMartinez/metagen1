@@ -1,5 +1,6 @@
 include { callMetaspades } from '../modules/spades'
 include { callMegahit } from '../modules/megahit'
+include { callMetaquast } from '../modules/metaquast'
 
 workflow ASSEMBLY {
   take:
@@ -31,7 +32,25 @@ workflow ASSEMBLY {
     ch_megahit_output = Channel.from([])
   }
   
+    //Call Metaquast
+  if(params.callMetaquast.do_metaquast){
+    metaquast_in  = ch_spades_output.map{it -> tuple(it[0], "metaspades", it[1]) }
+    if(params.callMegahit.do_megahit){
+      metaquast_in=metaquast_in.concat(
+        ch_megahit_output.map{it -> tuple(it[0], "megahit", it[1]) }
+      )//.view{"MetaQUAST input: $it"}
+    }
+    callMetaquast(params.callMetaquast.min_length,
+            params.callMetaquast.options,
+            metaquast_in)
+    ch_metaquast_output = callMetaquast.out
+        //.view{"Metaquast output: $it"}
+  }else{
+    ch_metaquast_output = Channel.from([])
+  }
+
   emit:
   ch_spades_output
   ch_megahit_output
+  ch_metaquast_output
 }

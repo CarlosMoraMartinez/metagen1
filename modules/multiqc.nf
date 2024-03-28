@@ -16,6 +16,7 @@ process multiQC{
     path kraken_err
     path bracken_err
     path megahit_err
+    path metaquast
 
   output:
   path("multiqc_report.html")

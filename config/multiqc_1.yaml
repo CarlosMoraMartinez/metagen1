@@ -42,6 +42,9 @@ top_modules:
       info: "Assembly from filtered reads"
       path_filters:
        - "*.megahit.err"
+ - "quast":
+      name: "QUAST"
+      info: "Quality control for assemblies"
  - "fastqc":
       name: "FastQC Before Trimming - R1"
       info: "This section shows the module with different files"

@@ -9,6 +9,7 @@ workflow MULTIQC{
   ch_kraken2_output
   ch_bracken_output
   ch_megahit_output
+  ch_metaquast_output
 
   main:
 
@@ -19,6 +20,7 @@ workflow MULTIQC{
   kraken_err = ch_kraken2_output.map{it -> it[2]}.collect().ifEmpty([])
   bracken_err = ch_bracken_output.map{it -> it[4]}.collect().ifEmpty([])
   megahit_err = ch_megahit_output.map{it -> it[4]}.collect().ifEmpty([])
+  ch_metaquast_tsv = ch_metaquast_output.map{it -> it[3]}.collect().ifEmpty([])
 
   //Call multiQC process
   multiQC(params.multiQC.configyaml,
@@ -27,7 +29,8 @@ workflow MULTIQC{
             bowtie2_err, 
             kraken_err, 
             bracken_err,
-            megahit_err
+            megahit_err,
+            ch_metaquast_tsv
             )
   ch_multiqc_out = multiQC.out //.map{it -> it[1]}
 emit:
