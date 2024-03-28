@@ -4,6 +4,7 @@ include { CLEANFASTQ } from './workflows/cleanfastqwf.nf'
 include { KRAKEN2BRACKEN } from './workflows/kraken2brackenwf.nf'
 include { MULTIQC } from './workflows/multiqcwf.nf'
 include { HUMANN3 } from './workflows/humann3wf.nf'
+include { ASSEMBLY } from './workflows/assembly.nf'
 
 
 workflow {
@@ -57,8 +58,17 @@ workflow {
    if(params.workflows.doHumann3){
       HUMANN3(ch_fastq_filtered)
       ch_humann3 = HUMANN3.out.ch_humann3
+   }else{
+      ch_humann3 = Channel.from([])
    }
 
+   //Call Assembly workflow
+   if(params.workflows.doAssembly){
+      ASSEMBLY(ch_fastq_filtered)
+      ch_spades_output = ASSEMBLY.out.ch_spades_output
+   }else{
+      ch_spades_output = Channel.from([])
+   }
    //Call MultiQC workflow
 
    if(params.workflows.doMultiQC){
