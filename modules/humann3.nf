@@ -4,6 +4,7 @@ process doHumann3{
   cpus params.resources.doHumann3.cpus
   memory params.resources.doHumann3.mem
   queue params.resources.doHumann3.queue
+  time params.resources.doHumann3.time
   clusterOptions params.resources.doHumann3.clusterOptions
   errorStrategy { task.exitStatus in 1..2 ? 'retry' : 'ignore' }
   maxRetries 10
