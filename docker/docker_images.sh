@@ -14,3 +14,4 @@ sudo docker pull staphb/samtools:latest
 sudo docker pull staphb/spades:latest
 sudo docker pull nanozoo/megahit:latest
 sudo docker pull staphb/quast:latest
+sudo docker pull john2117/metabat2:latest
