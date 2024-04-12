@@ -8,6 +8,7 @@ workflow MULTIQC{
   ch_alignment_output
   ch_kraken2_output
   ch_bracken_output
+  ch_metaphlan_output
   ch_megahit_output
   ch_metaquast_output
 
@@ -19,6 +20,7 @@ workflow MULTIQC{
   bowtie2_err = ch_alignment_output.map{it -> it[2]}.collect().ifEmpty([])
   kraken_err = ch_kraken2_output.map{it -> it[2]}.collect().ifEmpty([])
   bracken_err = ch_bracken_output.map{it -> it[4]}.collect().ifEmpty([])
+  metaphlan_err = ch_metaphlan_output.map{it -> it[1]}.collect().ifEmpty([])
   megahit_err = ch_megahit_output.map{it -> it[4]}.collect().ifEmpty([])
   ch_metaquast_tsv = ch_metaquast_output.map{it -> it[3]}.collect().ifEmpty([])
 
@@ -29,6 +31,7 @@ workflow MULTIQC{
             bowtie2_err, 
             kraken_err, 
             bracken_err,
+            metaphlan_err,
             megahit_err,
             ch_metaquast_tsv
             )

@@ -57,8 +57,12 @@ workflow {
   //Call Humann3 workflow
    if(params.workflows.doHumann3){
       HUMANN3(ch_fastq_filtered)
+      ch_metaphlan = HUMANN3.out.ch_metaphlan
+      ch_metaphlan_merged = HUMANN3.out.ch_metaphlan
       ch_humann3 = HUMANN3.out.ch_humann3
    }else{
+      ch_metaphlan = Channel.from([])
+      ch_metaphlan_merged = Channel.from([])
       ch_humann3 = Channel.from([])
    }
 
@@ -82,6 +86,7 @@ workflow {
         ch_alignment_output,
         ch_kraken2_output,
         ch_bracken_output,
+        ch_metaphlan,
         ch_megahit_output,
         ch_metaquast_output
       )

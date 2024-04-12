@@ -81,7 +81,6 @@ conda create -y --name spades-env python=3.11
 conda activate megahit-env
 conda install -y -c bioconda megahit
 
-
 ## Add Krakentools to kraken2-env
 #get scripts from github
 mkdir tmp
