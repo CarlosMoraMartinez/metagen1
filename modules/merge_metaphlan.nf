@@ -15,7 +15,7 @@ process mergeMetaphlan{
   
   shell:
   '''
-  merge_metaphlan_tables --input . --output metaphlan_merged.tsv  
+  merge_metaphlan_tables.py *.txt -o metaphlan_merged.tsv  
   '''
 
   stub:
