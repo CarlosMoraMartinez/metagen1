@@ -14,7 +14,7 @@ process doMetaphlan{
     tuple(val(illumina_id), path(fastq_merged))
 
   output:
-    tuple(val(illumina_id), path('*.metaphlan.txt'), path('*.bowtie2.out'))
+    tuple(val(illumina_id), path('*_metaphlan.txt'), path('*_bowtie2.out'))
   
   shell:
   '''
