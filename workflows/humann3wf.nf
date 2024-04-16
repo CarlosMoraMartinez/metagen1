@@ -24,12 +24,12 @@ ch_metaphlan = doMetaphlan.out
     .view{ "Metaphlan output: $it" }
 
 ch_metaphlan_join = ch_metaphlan
-    .map{it -> tuple( it[2])}
+    .map{it -> tuple( it[1])}
     .flatten()
     .collect()
     .view{ "Metaphlan output join: $it" }
 mergeMetaphlan(ch_metaphlan_join)
-ch_metaphlan_merged = ch_metaphlan_join.out
+ch_metaphlan_merged = mergeMetaphlan.out
     .view{ "Metaphlan merged output: $it" }
 
 
